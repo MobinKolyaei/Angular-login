@@ -35,5 +35,4 @@ export class AppComponent {
       n.preventDefault();
     }
   }
-
 }

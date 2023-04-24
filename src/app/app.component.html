@@ -7,13 +7,13 @@
     <div>
       <mat-form-field appearance="fill" class="example-full-width">
         <mat-label>نام</mat-label>
-        <input (keypress)="key($event)" matInput [(ngModel)]="person.firstname" required="">
+        <input (keypress)="key($event)" matInput [(ngModel)]="person.firstname">
       </mat-form-field>
     </div>
     <div>
       <mat-form-field appearance="fill" class="example-full-width" >
         <mat-label>نام خانوادگی</mat-label>
-        <input matInput [(ngModel)]="person.lastname" required="">
+        <input matInput [(ngModel)]="person.lastname">
       </mat-form-field>
     </div>
     <div>
@@ -39,7 +39,7 @@
     <div>
       <mat-form-field class="example-full-width" *ngIf="person.married">
         <mat-label>تعداد فرزند</mat-label>
-        <input (keypress)="number($event)" [(ngModel)]="person.children" maxlength="2" max="5" min="0" type="number" matInput placeholder="تعداد فرزند" >
+        <input (keypress)="number($event)" [(ngModel)]="person.children" max="5" min="0" type="number" matInput placeholder="تعداد فرزند" >
       </mat-form-field>
     </div>
   </mat-card-content>
