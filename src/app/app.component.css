@@ -1,0 +1,28 @@
+.example-card {
+    width: 400px;
+  }
+  .empty{
+    background-color: rgb(255, 46, 46);
+  }
+.full{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.example-full-width {
+  width: 100%;
+}
+.f1{
+  margin-right: 5px;
+}
+.f2{
+  margin-right: auto;
+}
+@media (min-width="800px") {
+  .full{
+    width: 100vw;
+    height: 100vh;
+  }
+  
+}
