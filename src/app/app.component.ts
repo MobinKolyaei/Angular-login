@@ -8,6 +8,8 @@ import { disableDebugTools } from '@angular/platform-browser';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  message:string='';
+  needMessage:boolean=false;
   person = {
     firstname:'',
     lastname:'',
@@ -23,16 +25,24 @@ export class AppComponent {
     this.person.nezam='';
     this.person.married=false;
     this.person.children=0;
+    this.message='';
   }
   key(e:KeyboardEvent){
     if (e.key>='0' && e.key<='9') {
       e.preventDefault();
     }
-    console.log(e);
   }
   number(n:KeyboardEvent){
     if(n.key.includes('-') || n.key.includes('.') || n.key.includes('+')){
       n.preventDefault();
+    }
+  }
+  final(){
+    if(this.person.firstname=='' || this.person.lastname==''){
+      this.needMessage=true;
+    }
+    if(this.needMessage){
+      this.message='لطفا نام و نام خانوادگی خود را وارد کنید';
     }
   }
 }

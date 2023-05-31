@@ -1,6 +1,9 @@
 .example-card {
     width: 400px;
   }
+  .full{
+    border-bottom: 5px solid lightseagreen;
+  }
   .empty{
     background-color: rgb(255, 46, 46);
   }
@@ -9,6 +12,14 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
+}
+.empty{
+  color: red;
+  margin: auto;
+  background-color: transparent;
+  margin-bottom: 10px;
+  font-size: large;
+  margin-top: 10px;
 }
 .example-full-width {
   width: 100%;

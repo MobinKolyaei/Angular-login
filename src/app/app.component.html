@@ -1,52 +1,76 @@
 <div class="full">
-<mat-card class="example-card">
-  <mat-card-header>
-    <mat-card-title>فرم ثبت نام</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <div>
-      <mat-form-field appearance="fill" class="example-full-width">
-        <mat-label>نام</mat-label>
-        <input (keypress)="key($event)" matInput [(ngModel)]="person.firstname">
-      </mat-form-field>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>فرم ثبت نام</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div>
+        <mat-form-field appearance="fill" class="example-full-width">
+          <mat-label>نام</mat-label>
+          <input
+            [class.full]="person.firstname != ''"
+            (keypress)="key($event)"
+            matInput
+            [(ngModel)]="person.firstname"
+          />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill" class="example-full-width">
+          <mat-label>نام خانوادگی</mat-label>
+          <input matInput [(ngModel)]="person.lastname" />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-radio-group aria-label="جنسیت" [(ngModel)]="person.gender">
+          <label>جنسیت:</label>
+          <mat-radio-button value="men">مرد</mat-radio-button>
+          <mat-radio-button value="woman">زن</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div>
+        <mat-form-field
+          appearance="fill"
+          class="example-full-width"
+          *ngIf="person.gender == 'men'"
+        >
+          <mat-label>وضعیت نظام وظیفه</mat-label>
+          <mat-select [(ngModel)]="person.nezam">
+            <mat-option value="mashmool">مشمول</mat-option>
+            <mat-option value="moafiat">معافیت</mat-option>
+            <mat-option value="payan">پایان خدمت</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-checkbox class="example-margin" [(ngModel)]="person.married"
+          >متاهل</mat-checkbox
+        >
+      </div>
+      <div>
+        <mat-form-field class="example-full-width" *ngIf="person.married">
+          <mat-label>تعداد فرزند</mat-label>
+          <input
+            (keypress)="number($event)"
+            [(ngModel)]="person.children"
+            max="5"
+            min="0"
+            type="number"
+            matInput
+            placeholder="تعداد فرزند"
+          />
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-flat-button color="primary" (click)="final()">تایید</button>
+      <button class="f1" mat-raised-button color="warn">انصراف</button>
+      <button class="f2" mat-raised-button color="basic" (click)="cancel()">
+        مجدد
+      </button>
+    </mat-card-actions>
+    <div class="empty" *ngIf="needMessage">
+      {{ needMessage == true ? message : "" }}
     </div>
-    <div>
-      <mat-form-field appearance="fill" class="example-full-width" >
-        <mat-label>نام خانوادگی</mat-label>
-        <input matInput [(ngModel)]="person.lastname">
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-radio-group aria-label="جنسیت"[(ngModel)]="person.gender">
-        <label>جنسیت:</label>
-        <mat-radio-button value="men">مرد</mat-radio-button>
-        <mat-radio-button value="woman">زن</mat-radio-button>
-      </mat-radio-group>
-    </div>
-    <div>
-      <mat-form-field appearance="fill" class="example-full-width" *ngIf="person.gender=='men'">
-        <mat-label>وضعیت نظام وظیفه</mat-label>
-        <mat-select [(ngModel)]="person.nezam">
-          <mat-option value="mashmool">مشمول</mat-option>
-          <mat-option value="moafiat">معافیت</mat-option>
-          <mat-option value="payan">پایان خدمت</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-checkbox class="example-margin" [(ngModel)]="person.married">متاهل</mat-checkbox>
-    </div>
-    <div>
-      <mat-form-field class="example-full-width" *ngIf="person.married">
-        <mat-label>تعداد فرزند</mat-label>
-        <input (keypress)="number($event)" [(ngModel)]="person.children" max="5" min="0" type="number" matInput placeholder="تعداد فرزند" >
-      </mat-form-field>
-    </div>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-flat-button color="primary">تایید</button>
-    <button class="f1" mat-raised-button color="warn">انصراف</button>
-    <button class="f2" mat-raised-button color="basic" (click)="cancel()">مجدد</button>
-  </mat-card-actions>
-</mat-card>
+  </mat-card>
 </div>
